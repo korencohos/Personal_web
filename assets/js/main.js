@@ -206,7 +206,7 @@
       if (!navmenulink.hash) return;
       let section = document.querySelector(navmenulink.hash);
       if (!section) return;
-      let position = window.scrollY + 550;
+      let position = window.scrollY + 490;
 
       // Check if it's the Contact link
       if (navmenulink.getAttribute('href') === '#contact') {
