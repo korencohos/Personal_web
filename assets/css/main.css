@@ -218,6 +218,8 @@ h6 {
   .navmenu .active,
   .navmenu .active:focus {
     color: var(--nav-hover-color);
+	
+	
   }
  /* Navmenu - Desktop - My circle top pohoto of mine */
   .menu-image {
@@ -261,7 +263,7 @@ h6 {
     display: none;
     list-style: none;
     position: absolute;
-    inset: 60px 20px 20px 20px;
+    inset: 60px 20px 200px 20px;
     padding: 10px 0;
     margin: 0;
     border-radius: 6px;
@@ -306,6 +308,8 @@ h6 {
     background-color: var(--accent-color);
     color: var(--contrast-color);
   }
+  
+
 
   .navmenu a:hover,
   .navmenu .active,
