@@ -162,6 +162,24 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
 }
+/* ADDED: Styles for the new container */
+.nav-profile-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Adjust gap between image and name if needed */
+}
+.nav-profile-info .navbar-brand {
+  margin-bottom: 0; /* Remove default paragraph margin */
+}
+/* Optional: Uncomment below if you want a circular image */
+/*
+.nav-profile-info .menu-image {
+  border-radius: 50%;
+}
+*/
+
+
+
 
 
 /*--------------------------------------------------------------
@@ -175,6 +193,15 @@ h6 {
   justify-content: center;
   padding-right: 15rem;
 }
+
+ /* ADDED: Spacing for the profile container */
+  .nav-profile-info {
+      margin-right: 5rem; /* Creates space between profile info and nav links */
+  }
+    .nav-profile-info p {
+      margin-right: 5rem; /* Creates space between profile info and nav links */
+	  font-size: 25px;
+  }
 
   .navmenu ul {
     margin: 0;
@@ -225,23 +252,34 @@ h6 {
   .menu-image {
     width: 110px;
     height: 110px;
-    border-radius: 0%;
-    margin-left: 10rem;
-}
+    border-radius: 0%; /* Keep original square shape unless changed above */
+    /* margin-left: 10rem; */ /* REMOVED: Handled by container now */
+  }
 /* Navmenu - Desktop - The text KOREN COHOS in the menu bar */
- .navbar-brand {
+  /* MODIFIED: Adjustments for brand inside container */
+  .navbar-brand {
     color: #0059ff;
     font-size: 20px;
     font-weight: 600;
-    margin-right: 5rem; /* Important for pushing other items away */
-	padding-top: 15px;
-}
+    /* margin-right: 5rem; */ /* REMOVED: Handled by container now */
+    /* padding-top: 15px; */ /* REMOVED: align-items handles vertical centering */
+    margin-bottom: 0; /* ADDED: Ensure no bottom margin */
+  }
 
 
 }
 
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
+  
+   /* ADDED: Styles for profile container in mobile */
+  .nav-profile-info {
+      padding-left: 1rem; /* Add some space from the left edge */
+      gap: 0.5rem; /* Smaller gap for mobile */
+  }
+  
+  
+  
   .mobile-nav-toggle {
     position: absolute;
     top: 15px;
@@ -371,22 +409,25 @@ h6 {
     display: block;
   }
     /* Navmenu - mobile - My circle top pohoto of mine */
+  /* MODIFIED: Adjustments for image inside container */
   .menu-image {
     width: 80px;
     height: 80px;
-    border-radius: 0%;
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-}
+    border-radius: 0%; /* Keep original shape unless changed above */
+    /* position: fixed; */   /* REMOVED */
+    /* top: 1rem; */        /* REMOVED */
+    /* left: 1rem; */       /* REMOVED */
+  }
 /* Navmenu - mobile - The text KOREN COHOS in the menu bar */
-.navbar-brand {
+/* MODIFIED: Adjustments for brand inside container */
+  .navbar-brand {
     color: #0059ff;
-    font-size: 20px;
+    font-size: 25px; /* Keep original size, adjust if needed */
     font-weight: 600;
-    margin-left: 6rem; /* Important for pushing other items away */
-	padding-top: 15px;
-}
+    /* margin-left: 6rem; */ /* REMOVED */
+    /* padding-top: 15px; */  /* REMOVED */
+    margin-bottom: 0; /* ADDED: Ensure no bottom margin */
+  }
 }
 
 /*--------------------------------------------------------------
@@ -623,7 +664,7 @@ section,
   background: url(../img/hero-bg.jpg) top center no-repeat;
   background-size: cover;
   width: 100%;
-  min-height: 88vh;
+  min-height: 91vh;
   position: relative;
   padding: 120px 0 60px 0;
   display: flex;
@@ -656,7 +697,7 @@ section,
 
 .hero h2 {
   margin: 0;
-  font-size: 36px;
+  font-size: 50px;
   font-weight: 700;
   line-height: 0px;
 }
@@ -667,6 +708,15 @@ section,
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1px;
+}
+
+
+/* Apply these styles only when the screen width is 1199px or less */
+@media (max-width: 1920px) {
+  .hero h2 {
+    /* Add the negative top margin here */
+    margin-top: -200px; /* Use the negative value that worked for you */
+  }
 }
 
 @media (max-width: 640px) {

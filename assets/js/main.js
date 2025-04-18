@@ -197,37 +197,47 @@
   });
 
   /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
+/**
+ /**
+ * Navmenu Scrollspy
+ */
+let navmenulinks = document.querySelectorAll('.navmenu a');
 
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 490;
+function navmenuScrollspy() {
+  navmenulinks.forEach(navmenulink => {
+    if (!navmenulink.hash) return;
+    let section = document.querySelector(navmenulink.hash);
+    if (!section) return;
 
-      // Check if it's the Contact link
-      if (navmenulink.getAttribute('href') === '#contact') {
-        // Adjust the condition for the Contact section (you might need to fine-tune the value)
-        if (position >= section.offsetTop) {
-          document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-          navmenulink.classList.add('active');
-        } else {
-          navmenulink.classList.remove('active');
-        }
-      } else {
-        if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-          document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-          navmenulink.classList.add('active');
-        } else {
-          navmenulink.classList.remove('active');
-        }
-      }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
+    // This offset affects the activation point for most links (like #skills)
+    let generalMobileOffset = 460; // Use the value that works best for skills and other links
+    let position = window.scrollY + generalMobileOffset;
 
+    // Introduce a separate adjustment specifically for the Contact link activation
+    // You will need to fine-tune this value. A negative value will make it active earlier.
+    let contactActivationOffsetAdjustment = -50; // Start at 0 and adjust
+
+    // Check if it's the Contact link
+    if (navmenulink.getAttribute('href') === '#contact') {
+      // Adjust the condition for the Contact section using the specific adjustment
+      // We compare the position with section.offsetTop + the contact adjustment
+      if (position >= (section.offsetTop + contactActivationOffsetAdjustment)) {
+        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+        navmenulink.classList.add('active');
+      } else {
+        navmenulink.classList.remove('active');
+      }
+    } else {
+      // General logic for other links (uses the generalMobileOffset)
+      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
+        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
+        navmenulink.classList.add('active');
+      } else {
+        navmenulink.classList.remove('active');
+      }
+    }
+  })
+}
+window.addEventListener('load', navmenuScrollspy);
+document.addEventListener('scroll', navmenuScrollspy);
 })();
