@@ -785,21 +785,27 @@ section,
 /*--------------------------------------------------------------
 # Skills Section
 --------------------------------------------------------------*/
+.skills {
+  margin-bottom: 350px; /* 100px space under the skills section */
+}
+
 .skills .progress {
-  height: 60px;
+  height: 100px; /* was 60px, now bigger */
   display: block;
   background: none;
   border-radius: 0;
+  padding: 20px; /* added padding for more space inside */
 }
 
 .skills .progress .skill {
   color: var(--heading-color);
-  padding: 0;
-  margin: 0 0 6px 0;
+  padding: 5px 0; /* added a little vertical padding */
+  margin: 0 0 10px 0; /* more bottom space between skills */
   text-transform: uppercase;
   display: block;
   font-weight: 600;
   font-family: var(--heading-font);
+  font-size: 1.2rem; /* slightly bigger text */
 }
 
 .skills .progress .skill .val {
@@ -809,15 +815,17 @@ section,
 
 .skills .progress-bar-wrap {
   background: color-mix(in srgb, var(--default-color), transparent 90%);
-  height: 10px;
+  height: 14px; /* slightly thicker progress bar */
+  border-radius: 7px; /* make the bar more rounded */
 }
 
 .skills .progress-bar {
   width: 1px;
-  height: 10px;
+  height: 14px;
   transition: 0.9s;
   background-color: var(--accent-color);
 }
+
 
 /*--------------------------------------------------------------
 # Resume Section
@@ -1045,6 +1053,16 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
+.contact {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 60px;
+}
+
+
+
 .contact .info-item+.info-item {
   margin-top: 40px;
 }
