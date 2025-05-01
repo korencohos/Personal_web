@@ -291,7 +291,7 @@
         <p>Here are some photos from good times.</p>
       </div><!-- End Section Title -->
 
-      <div class="container">
+      <div class="container d-none d-md-block"><!-- Desktop Only -->
 
         <img style="height:300px" src="assets/img/masonry-portfolio/1.jpeg">
 		<img style="height:300px" src="assets/img/masonry-portfolio/2.jpg">
@@ -300,6 +300,31 @@
 		<img style="height:300px" src="assets/img/masonry-portfolio/5.jpg">
 		<img style="height:300px" src="assets/img/masonry-portfolio/6.jpg">
           </div><!-- End Portfolio Container -->
+		  
+		  
+		 <!-- Mobile Swiper with Arrows -->
+<div class="container d-block d-md-none">
+  <div class="swiper mobile-gallery-swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img alt="1" src="assets/img/masonry-portfolio/1.jpeg"></div>
+      <div class="swiper-slide"><img alt="2" src="assets/img/masonry-portfolio/2.jpg"></div>
+      <div class="swiper-slide"><img alt="3" src="assets/img/masonry-portfolio/3.jpg"></div>
+      <div class="swiper-slide"><img alt="4" src="assets/img/masonry-portfolio/4.jpg"></div>
+      <div class="swiper-slide"><img alt="5" src="assets/img/masonry-portfolio/5.jpg"></div>
+      <div class="swiper-slide"><img alt="6" src="assets/img/masonry-portfolio/6.jpg"></div>
+    </div>
+    <!-- Arrows for Navigation -->
+	<div class="swiper-pagination"></div>
+	<div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    
+  </div>
+</div>
+		  
+		  
+		  
+		  
+		  
 
 
     </section><!-- /Portfolio Section -->
@@ -360,6 +385,38 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+ <script>
+  let mobileSwiper = null;
+
+  function initOrDestroySwiper() {
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile && !mobileSwiper) {
+      mobileSwiper = new Swiper(".mobile-gallery-swiper", {
+        loop: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    } else if (!isMobile && mobileSwiper) {
+      mobileSwiper.destroy(true, true);
+      mobileSwiper = null;
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initOrDestroySwiper();
+    window.addEventListener("resize", initOrDestroySwiper);
+  });
+</script>
+
+
 
 </body>
 

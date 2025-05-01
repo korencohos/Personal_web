@@ -991,7 +991,7 @@ section,
     font-size: 14px;
     margin: 0 0 10px 0;
   }
-}
+
 
 .portfolio .portfolio-item {
   position: relative;
@@ -1048,6 +1048,72 @@ section,
   opacity: 1;
   bottom: 0;
 }
+
+
+
+  .swiper-slide img {
+    width: 100%; /* Ensure images take up full width of the slide */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Make sure images cover the area of the slide */
+    border-radius: 10px; /* Optional: Round corners for a polished look */
+	display: block;
+  }
+  
+  
+/* Position the swiper container */
+.swiper {
+  position: relative;
+  padding-top: 40px; /* Create space for top dots */
+}
+
+/* Images maintain their aspect ratio */
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Correct selector for the pagination dots */
+.swiper .swiper-pagination {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  gap: 8px;
+}
+
+/* Bullet styles */
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #007bff;
+  opacity: 1;
+}
+
+/* Optional arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #d50000;
+}
+
+
+
+
+
+}
+
+
+  
 
 
 /*--------------------------------------------------------------
@@ -1201,6 +1267,10 @@ section,
   padding: 0;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
+
+ 
+}
+
 
 /*--------------------------------------------------------------
 # Service Details Section
