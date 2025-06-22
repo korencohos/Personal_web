@@ -1,0 +1,18 @@
+{% extends "website/base.html" %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+  <h1>My Projects</h1>
+  <ul>
+    {% for project in projects %}
+      <li>
+        <strong>{{ project.title }}</strong><br>
+        {{ project.description }}<br>
+        {% if project.link %}
+          <a href="{{ project.link }}" class="project-link" target="_blank">View Project</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

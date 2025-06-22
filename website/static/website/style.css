@@ -1,0 +1,77 @@
+html {
+scroll-behavior: smooth;
+}
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f7fa;
+    color: #333;
+    padding: 20px;
+}
+
+/* Navigation bar */
+nav {
+    background-color: #333;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+nav a {
+    color: #f1f1f1;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #4CAF50;
+}
+
+/* Content styling */
+h1 {
+    margin-bottom: 15px;
+    color: #222;
+}
+
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Project link styling */
+a.project-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #4CAF50;
+    text-decoration: underline;
+}
+
+a.project-link:hover {
+    color: #388E3C;
+}
+
+/* Footer (optional) */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #777;
+}

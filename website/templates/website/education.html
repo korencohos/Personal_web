@@ -1,0 +1,12 @@
+{% extends "website/base.html" %}
+
+{% block title %}Education{% endblock %}
+
+{% block content %}
+  <h1>Education</h1>
+  <ul>
+    {% for edu in education %}
+      <li>{{ edu.degree }} — {{ edu.institution }} ({{ edu.year }})</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

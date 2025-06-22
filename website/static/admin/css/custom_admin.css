@@ -1,0 +1,13 @@
+fieldset.module.aligned td, .inline-group {
+  white-space: normal !important;
+  word-break: break-word;
+  max-width: 100%;
+}
+
+fieldset.module.aligned input, 
+fieldset.module.aligned textarea, 
+fieldset.module.aligned select {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}

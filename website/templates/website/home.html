@@ -1,0 +1,121 @@
+{% extends "website/base.html" %}
+{% block title %}My Portfolio{% endblock %}
+
+{% block content %}
+
+<div class="content">
+  {% for section in sections %}
+    <section id="{{ section.slug }}" style="padding: 100px 0;">
+      <h1>{{ section.title }}</h1>
+
+      {# ✅ Always show intro/content if it exists #}
+     {% if section.content %}
+  <div class="content-with-image" style="display: flex; align-items: flex-start; gap: 20px; max-width: 900px; margin: 0 auto; padding: 0 30px; margin-bottom: 20px;">
+    {% if section.image %}
+      <div class="section-image" style="flex: 1; max-width: 250px;">
+        <img src="{{ section.image.url }}" alt="{{ section.title }}" style="width: 100%; height: auto; border-radius: 8px; object-fit: cover;">
+      </div>
+    {% endif %}
+    <div class="ckeditor-content" style="flex: 2;">
+      {{ section.content|safe }}
+    </div>
+  </div>
+{% endif %}
+
+      {# ✅ Section-specific layouts #}
+      {% if section.section_type == 'skills' %}
+        {% for skill in skills %}
+          <div style="margin-bottom: 10px; padding: 0 30px;">
+            <strong style="margin-left: 10px;">{{ skill.name }}</strong>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="flex-grow: 1; background: #ddd; border-radius: 5px; overflow: hidden; height: 30px;">
+                <div class="skill-bar"
+                     data-level="{{ skill.level }}"
+                     style="width: 0; background: #3498db; height: 100%; transition: width 1s ease;">
+                </div>
+              </div>
+              <div class="skill-percent" style="min-width: 40px; text-align: left; font-weight: bold;">0%</div>
+            </div>
+          </div>
+        {% endfor %}
+
+      {% elif section.section_type == 'projects' %}
+        <div class="projects-slider-wrapper">
+          <button class="project-arrow" onclick="scrollProjects('{{ section.slug }}', -1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div id="projects-{{ section.slug }}" class="projects-slider-container">
+            {% for project in section.project_items.all %}
+              <div class="project-card">
+                {% if project.image %}
+                  <img src="{{ project.image.url }}" style="width: 100%; max-height: 160px; object-fit: cover; border-radius: 5px; margin-bottom: 10px;">
+                {% endif %}
+                <h3>{{ project.title }}</h3>
+                <p class="project-date">{{ project.date_created }}</p>
+                <div>{{ project.description|safe }}</div>
+                {% if project.link %}
+                  <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" style="color: #3498db;">View Project</a>
+                {% endif %}
+                 {% if project.pdf_file %}
+      <div style="text-align: center; margin-top: 15px;">
+      <a href="{{ project.pdf_file.url }}" target="_blank" class="pdf-button">
+        View PDF
+      </a>
+    </div>
+    {% endif %}
+              </div>
+            {% empty %}
+              <p>No projects to display.</p>
+            {% endfor %}
+          </div>
+          <button class="project-arrow" onclick="scrollProjects('{{ section.slug }}', 1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+      {% elif section.section_type == 'gallery' %}
+        <div class="gallery-wrapper">
+          <button class="gallery-arrow" onclick="scrollGallery('{{ section.slug }}', -1)">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <div id="gallery-{{ section.slug }}" class="gallery-container">
+            {% for image in section.images.all %}
+              <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="gallery-image" onclick="openImagePopup(this)" />
+            {% endfor %}
+          </div>
+          <button class="gallery-arrow" onclick="scrollGallery('{{ section.slug }}', 1)">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+      {% endif %}
+    </section>
+  {% endfor %}
+</div>
+
+<script>
+  // Animate skill bars and show percent text
+  document.addEventListener("DOMContentLoaded", function() {
+    const skillBars = document.querySelectorAll(".skill-bar");
+    skillBars.forEach(bar => {
+      const level = bar.getAttribute("data-level");
+      bar.style.width = level + "%";
+      const percentText = bar.parentElement.nextElementSibling;
+      if (percentText) {
+        percentText.textContent = level + "%";
+      }
+    });
+  });
+</script>
+{% endblock %}
+
+<script>
+  function openPdfPopup(event, url) {
+    event.preventDefault();
+    const width = 900;
+    const height = 600;
+    const left = (screen.width / 2) - (width / 2);
+    const top = (screen.height / 2) - (height / 2);
+    window.open(url, 'PDFViewer', `width=${width},height=${height},top=${top},left=${left}`);
+  }
+</script>
