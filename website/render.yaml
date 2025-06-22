@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: portfolio-site
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn portfolio_site.wsgi
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio_site.settings
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        value: django-insecure-6*9do718$3mu%a_p4dv+eflh*1^&o!!%iz2gg%3evp90dr6b11
+      - key: DEBUG
+        value: False
